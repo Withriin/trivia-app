@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1708883325832" clover="3.2.0">
-  <project timestamp="1708883325832" name="All files">
+<coverage generated="1708905411630" clover="3.2.0">
+  <project timestamp="1708905411630" name="All files">
     <metrics statements="62" coveredstatements="62" conditionals="16" coveredconditionals="16" methods="10" coveredmethods="10" elements="88" coveredelements="88" complexity="0" loc="62" ncloc="62" packages="1" files="1" classes="1"/>
     <file name="TriviaCardListObject.tsx" path="C:\Users\outsi\IdeaProjects\trivia-app\src\features\gameLogic\TriviaCardListObject.tsx">
       <metrics statements="62" coveredstatements="62" conditionals="16" coveredconditionals="16" methods="10" coveredmethods="10"/>

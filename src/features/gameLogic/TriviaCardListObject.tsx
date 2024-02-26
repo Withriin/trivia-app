@@ -1,3 +1,14 @@
+interface Answer{
+    id: number;
+    text: string;
+    isCorrect: boolean;
+}
+interface TriviaCard{
+    id: number;
+    question: string;
+    answers: Answer[];
+    isSelected: boolean;
+}
 class Node {
     data: any; // Consider using a more specific type for your data
     next: Node | null = null;
