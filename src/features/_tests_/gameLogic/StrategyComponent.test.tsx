@@ -1,7 +1,7 @@
-import {TriviaCardListObject} from "../../gameLogic/TriviaCardListObject.tsx";
+import {DoubleLinkedList} from "../../gameLogic/DoubleLinkedList.tsx";
 import {ConcreteTriviaStrategy, StrategyComponent} from "../../gameLogic/StrategyComponent.tsx";
 import {Repository} from "../../../utils/Repository.tsx";
-jest.mock('../../utils/Repository.tsx', () => {
+jest.mock('../../../utils/Repository.tsx', () => {
     return {
         Repository: jest.fn().mockImplementation(() => ({
             getData: jest.fn().mockReturnValue([
@@ -16,13 +16,13 @@ jest.mock('../../utils/Repository.tsx', () => {
 describe('StrategyComponent', () => {
     let strategyComponent: StrategyComponent;
     let strategy: ConcreteTriviaStrategy;
-    let triviaCardListObject: TriviaCardListObject;
+    let triviaCardListObject: DoubleLinkedList;
     let repository: Repository;
 
     beforeEach(() => {
         // Recreate mocks and instances before each test
         strategy = new ConcreteTriviaStrategy();
-        triviaCardListObject = new TriviaCardListObject();
+        triviaCardListObject = new DoubleLinkedList();
         repository = new Repository(); // Gets the mocked version
         strategyComponent = new StrategyComponent(repository, triviaCardListObject, strategy);
     });

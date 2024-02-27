@@ -1,10 +1,10 @@
-import {TriviaCardListObject} from '../../gameLogic/TriviaCardListObject.tsx'
+import {DoubleLinkedList} from '../../gameLogic/DoubleLinkedList.tsx'
 
-describe('TriviaCardListObject', () => {
-    let list: TriviaCardListObject;
+describe('DoubleLinkedList', () => {
+    let list: DoubleLinkedList;
 
     beforeEach(() => {
-        list = new TriviaCardListObject();
+        list = new DoubleLinkedList();
     });
 
     it('should be empty when created', () => {

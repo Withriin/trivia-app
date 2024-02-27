@@ -1,30 +1,24 @@
-interface Answer{
-    id: number;
-    text: string;
-    isCorrect: boolean;
-}
-interface TriviaCard{
-    id: number;
-    question: string;
-    answers: Answer[];
-    isSelected: boolean;
-}
 class Node {
     data: any; // Consider using a more specific type for your data
-    next: Node | null = null;
-    prev: Node | null = null;
+    next: Node | null;
+    prev: Node | null;
+
 
     constructor(data: any) {
         this.data = data;
+        this.next = null;
+        this.prev = null;
     }
 }
-export class TriviaCardListObject{
+export class DoubleLinkedList {
     private head: Node | null;
     private tail: Node | null;
+    private current: Node | null | undefined;
     private count: number;
     constructor() {
         this.head = null;
         this.tail = null;
+        this.current = null;
         this.count = 0;
     }
 
@@ -34,6 +28,7 @@ export class TriviaCardListObject{
         if(!this.head){
             this.head = newNode;
             this.tail = newNode;
+            this.current = newNode; // initialize current node to first node in list
         }else{
             newNode.prev = this.tail;
             this.tail!.next = newNode;
@@ -41,9 +36,15 @@ export class TriviaCardListObject{
         }
         this.count++;
     }
+    getCurrent(){
+        return this.current
+    }
 
-    nextCard(currentNode: Node){
-        return currentNode.next;
+    nextCard(){
+        if(this.current?.next){
+            this.current = this.current?.next;
+        }
+        return this.current;
     }
     findCard(criteria: any){
         let current = this.head;
@@ -55,8 +56,11 @@ export class TriviaCardListObject{
         }
         return null; // If no card matches the criteria
     }
-    prevCard(currentNode: Node){
-        return currentNode.prev;
+    prevCard(){
+        if(this.current?.prev){
+            this.current = this.current?.prev;
+        }
+        return this.current;
     }
     getFirstCard(){
         return this.head;

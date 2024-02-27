@@ -1,7 +1,7 @@
 TN:
-SF:src\features\gameLogic\TriviaCardListObject.tsx
+SF:src\features\gameLogic\DoubleLinkedList.tsx
 FN:6,Node
-FN:14,TriviaCardListObject
+FN:14,DoubleLinkedList
 FN:21,addCard
 FN:34,nextCard
 FN:37,findCard
@@ -13,7 +13,7 @@ FN:59,size
 FNF:10
 FNH:10
 FNDA:5,Node
-FNDA:4,TriviaCardListObject
+FNDA:4,DoubleLinkedList
 FNDA:5,addCard
 FNDA:1,nextCard
 FNDA:2,findCard
