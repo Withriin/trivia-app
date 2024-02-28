@@ -1,7 +1,6 @@
 import {DoubleLinkedList} from "./DoubleLinkedList.tsx";
 import {Repository} from "../../utils/Repository.tsx";
 import {TriviaCard, Answer} from "./TriviaInterfaces.ts";
-import {constructor} from "global-jsdom";
 
 interface TriviaStrategy{
     execute(triviaData: any[]): DoubleLinkedList;
@@ -40,6 +39,7 @@ export class StrategyComponent{
     private repository: Repository;
     private triviaCardLinkedList: DoubleLinkedList = new DoubleLinkedList();
     private strategy: TriviaStrategy;
+    private score = 0;
 
 
     constructor(repository: Repository, strategy: TriviaStrategy) {
@@ -64,17 +64,31 @@ export class StrategyComponent{
             this.triviaCardLinkedList.nextCard();
         }
     }
-    performOperation(): void{
+    performOperation(){
         const triviaData = this.repository.getData();
-        const cardLinkedList = this.strategy.execute(triviaData);
-
+        this.triviaCardLinkedList = this.strategy.execute(triviaData);
+    }
+    getScore(){
+        return this.score;
+    }
+    checkAnswer(answerId: number){
+        const currentCard = this.triviaCardLinkedList.getCurrent()?.data as TriviaCard;
+        if(currentCard){
+            const selectedAnswer = currentCard.answers.find(answer => answer.id === answerId)!;
+            selectedAnswer.isSelected = true;
+            if(selectedAnswer && selectedAnswer.isCorrect){
+                this.score++;
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
     }
 }
 
 /*
 TODO :
- - Add score handling
- - Optional: Consider a constructor where you lack the second parameter, example App.tsx usage.
  - Optional: Consider renaming StrategyComponent.  It's not a component?
  - Optional: Consider getting a single answer/card id from the "database"
  */
