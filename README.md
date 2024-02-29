@@ -1,6 +1,6 @@
-# Trivia Quest: Interactive React Trivia App
+# Trivia App: Interactive React Trivia App
 
-Trivia Quest is a web-based trivia game, built as a React learning project. The first version demonstrates React's capabilities with a small set of questions. Future plans include a larger question pool and more interactive features.
+Trivia App is a web-based trivia game, built as a React learning project. The first version demonstrates React's capabilities with a small set of questions. Future plans include a larger question pool and more interactive features.
 
 ## Features
 
