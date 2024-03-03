@@ -1,9 +1,16 @@
 import React from "react";
+import DisplayText from "./DisplayText.tsx";
+import Button from "./Button.tsx";
+import DisplayAnswers from "./DisplayAnswers.tsx";
+
 
 const Card = () => {
     return (
         <>
-            <div>Card</div>
+            <DisplayText />
+            <Button />
+            <Button />
+            <DisplayAnswers />
         </>
     )
 }
