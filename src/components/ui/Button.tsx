@@ -1,10 +1,11 @@
 import React from "react";
 
-const Button = () => {
+const Button = ({ children, style, onClick } : {children: any, style: React.CSSProperties; onClick: (event: React.MouseEvent) => void}) => {
     return (
-        <>
-            <div>Button</div>
-        </>
-    )
-}
-export default Button
+        <button style={style} onClick={onClick}>
+            {children}
+        </button>
+    );
+};
+
+export default Button;

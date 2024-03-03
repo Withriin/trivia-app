@@ -62,6 +62,9 @@ export class DoubleLinkedList {
         }
         return this.current;
     }
+    resetToFirstCard() {
+        this.current = this.head;
+    }
     getFirstCard(){
         return this.head;
     }

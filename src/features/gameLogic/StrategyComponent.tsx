@@ -20,7 +20,7 @@ export class ConcreteTriviaStrategy implements TriviaStrategy{
 
     private createTriviaCard(data:any): TriviaCard{
         const cardId = ++this.currentCardId;
-        const answers: Answer[] = data.answers.map((answer: string, index: number) => ({
+        const answers: Answer[] = data.answerList.map((answer: string, index: number) => ({
             id: index + 1,
             text: answer,
             isCorrect: index === 0,
@@ -38,13 +38,17 @@ export class ConcreteTriviaStrategy implements TriviaStrategy{
 export class StrategyComponent{
     private repository: Repository;
     private triviaCardLinkedList: DoubleLinkedList = new DoubleLinkedList();
-    private strategy: TriviaStrategy;
+    private strategy: ConcreteTriviaStrategy;
     private score = 0;
 
 
-    constructor(repository: Repository, strategy: TriviaStrategy) {
+    constructor(repository: Repository, strategy: ConcreteTriviaStrategy) {
         this.repository = repository;
         this.strategy = strategy;
+        this.initialize();
+    }
+    initialize(){
+        this.triviaCardLinkedList = this.strategy.execute(this.repository.getData());
     }
     nextCard(){
         this.triviaCardLinkedList.nextCard();
@@ -56,17 +60,18 @@ export class StrategyComponent{
         return this.triviaCardLinkedList.getCurrent();
     }
     reset(){
-        let i = this.triviaCardLinkedList.getFirstCard();
-        while(i){
-            this.triviaCardLinkedList.getCurrent()?.data.answers.forEach((answer: Answer) => {
+        let currentCard = this.triviaCardLinkedList.getFirstCard();
+        while(currentCard){
+            currentCard.data.answers.forEach((answer: Answer) => {
                 answer.isSelected = false;
             });
-            this.triviaCardLinkedList.nextCard();
+            if(currentCard.next) {
+                currentCard = currentCard.next;
+            }else{
+                break;
+            }
         }
-    }
-    performOperation(){
-        const triviaData = this.repository.getData();
-        this.triviaCardLinkedList = this.strategy.execute(triviaData);
+        this.triviaCardLinkedList.resetToFirstCard();
     }
     getScore(){
         return this.score;
