@@ -40,6 +40,7 @@ export class StrategyComponent{
     private triviaCardLinkedList: DoubleLinkedList = new DoubleLinkedList();
     private strategy: ConcreteTriviaStrategy;
     private score = 0;
+    private updateListeners: (() => void)[] = [];
 
 
     constructor(repository: Repository, strategy: ConcreteTriviaStrategy) {
@@ -49,6 +50,19 @@ export class StrategyComponent{
     }
     initialize(){
         this.triviaCardLinkedList = this.strategy.execute(this.repository.getData());
+    }
+
+    addUpdateListener(listener: () => void) {
+        this.updateListeners.push(listener);
+    }
+    removeUpdateListener(listener: () =>void){
+        const index = this.updateListeners.indexOf(listener);
+        if (index > -1){
+            this.updateListeners.splice(index, 1);
+        }
+    }
+    notifyUpdate() {
+        this.updateListeners.forEach(listener => listener());
     }
     nextCard(){
         this.triviaCardLinkedList.nextCard();
@@ -83,6 +97,7 @@ export class StrategyComponent{
             selectedAnswer.isSelected = true;
             if(selectedAnswer && selectedAnswer.isCorrect){
                 this.score++;
+                this.notifyUpdate();
                 return true;
             }
             else{

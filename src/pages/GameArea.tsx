@@ -3,11 +3,11 @@ import Card from "../components/ui/Card.tsx";
 
 
 const GameArea = () => {
-    return (
+       return(
         <>
             <TopicBar />
             <Card />
         </>
-    )
-}
+    );
+};
 export default GameArea
