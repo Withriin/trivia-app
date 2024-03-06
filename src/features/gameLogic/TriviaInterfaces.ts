@@ -10,4 +10,5 @@ export interface TriviaCard {
     id: number;
     question: string;
     answers: Answer[];
+    isAnswered: boolean;
 }

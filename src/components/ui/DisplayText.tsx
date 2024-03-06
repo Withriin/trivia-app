@@ -1,10 +1,10 @@
 import React from "react";
 
-const DisplayText = () => {
+const DisplayText = ({children, style} : {children: any, style?: React.CSSProperties;}) => {
+
+
     return (
-        <>
-            <div>Display Text</div>
-        </>
-    )
-}
+            <textarea style={style} value={children} readOnly />
+    );
+};
 export default DisplayText

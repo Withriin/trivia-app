@@ -30,7 +30,8 @@ export class ConcreteTriviaStrategy implements TriviaStrategy{
         return{
             id: cardId,
             question: data.question,
-            answers: answers,
+            answers: answers.sort(() => Math.random() - 0.5),
+            isAnswered: false
         };
     }
 }
@@ -40,6 +41,7 @@ export class StrategyComponent{
     private triviaCardLinkedList: DoubleLinkedList = new DoubleLinkedList();
     private strategy: ConcreteTriviaStrategy;
     private score = 0;
+    private updateListeners: (() => void)[] = [];
 
 
     constructor(repository: Repository, strategy: ConcreteTriviaStrategy) {
@@ -50,11 +52,26 @@ export class StrategyComponent{
     initialize(){
         this.triviaCardLinkedList = this.strategy.execute(this.repository.getData());
     }
+
+    addUpdateListener(listener: () => void) {
+        this.updateListeners.push(listener);
+    }
+    removeUpdateListener(listener: () =>void){
+        const index = this.updateListeners.indexOf(listener);
+        if (index > -1){
+            this.updateListeners.splice(index, 1);
+        }
+    }
+    notifyUpdate() {
+        this.updateListeners.forEach(listener => listener());
+    }
     nextCard(){
         this.triviaCardLinkedList.nextCard();
+        this.notifyUpdate();
     }
     prevCard(){
         this.triviaCardLinkedList.prevCard();
+        this.notifyUpdate();
     }
     getCard(){
         return this.triviaCardLinkedList.getCurrent();
@@ -62,6 +79,7 @@ export class StrategyComponent{
     reset(){
         let currentCard = this.triviaCardLinkedList.getFirstCard();
         while(currentCard){
+            currentCard.data.isAnswered = false;
             currentCard.data.answers.forEach((answer: Answer) => {
                 answer.isSelected = false;
             });
@@ -72,20 +90,25 @@ export class StrategyComponent{
             }
         }
         this.triviaCardLinkedList.resetToFirstCard();
+        this.score = 0;
+        this.notifyUpdate();
     }
     getScore(){
         return this.score;
     }
     checkAnswer(answerId: number){
         const currentCard = this.triviaCardLinkedList.getCurrent()?.data as TriviaCard;
+        this.triviaCardLinkedList.getCurrent()!.data.isAnswered = true;
         if(currentCard){
             const selectedAnswer = currentCard.answers.find(answer => answer.id === answerId)!;
             selectedAnswer.isSelected = true;
             if(selectedAnswer && selectedAnswer.isCorrect){
                 this.score++;
+                this.notifyUpdate();
                 return true;
             }
             else{
+                this.notifyUpdate();
                 return false;
             }
         }
@@ -95,5 +118,4 @@ export class StrategyComponent{
 /*
 TODO :
  - Optional: Consider renaming StrategyComponent.  It's not a component?
- - Optional: Consider getting a single answer/card id from the "database"
  */

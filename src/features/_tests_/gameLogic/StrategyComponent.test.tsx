@@ -63,7 +63,7 @@ describe('StrategyComponent', () => {
                 id: 1,
                 question: "First Question"
             };
-            expect(strategyComponent.getCard()?.data).toEqual(correctAnswer);
+            correctAnswer.answers.forEach((answer) =>expect(strategyComponent.getCard()?.data.answers).toContainEqual(answer));
         });
     it('navigates to the next card correctly', () =>{
         const firstCard = strategyComponent.getCard()?.data;
@@ -103,4 +103,34 @@ describe('StrategyComponent', () => {
         strategyComponent.checkAnswer(1);
         strategyComponent.reset();
     })
+
+    describe('Update Listeners', () => {
+        let mockListener : jest.Mock;
+
+        beforeEach(() => {
+            mockListener = jest.fn();
+            strategyComponent.addUpdateListener(mockListener);
+        });
+
+        it('should call listeners when notifyUpdate is called', () => {
+            strategyComponent.notifyUpdate();
+            expect(mockListener).toHaveBeenCalled();
+        });
+
+        it('should not call removed listeners when notifyUpdate is called', () => {
+            strategyComponent.removeUpdateListener(mockListener);
+            strategyComponent.notifyUpdate();
+            expect(mockListener).not.toHaveBeenCalled();
+        });
+
+        it('should handle adding multiple listeners and call all of them', () => {
+            const anotherMockListener = jest.fn();
+            strategyComponent.addUpdateListener(anotherMockListener);
+
+            strategyComponent.notifyUpdate();
+            expect(mockListener).toHaveBeenCalled();
+            expect(anotherMockListener).toHaveBeenCalled();
+        });
+
+    });
 });
