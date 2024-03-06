@@ -30,7 +30,8 @@ export class ConcreteTriviaStrategy implements TriviaStrategy{
         return{
             id: cardId,
             question: data.question,
-            answers: answers,
+            answers: answers.sort(() => Math.random() - 0.5),
+            isAnswered: false
         };
     }
 }
@@ -66,9 +67,11 @@ export class StrategyComponent{
     }
     nextCard(){
         this.triviaCardLinkedList.nextCard();
+        this.notifyUpdate();
     }
     prevCard(){
         this.triviaCardLinkedList.prevCard();
+        this.notifyUpdate();
     }
     getCard(){
         return this.triviaCardLinkedList.getCurrent();
@@ -76,6 +79,7 @@ export class StrategyComponent{
     reset(){
         let currentCard = this.triviaCardLinkedList.getFirstCard();
         while(currentCard){
+            currentCard.data.isAnswered = false;
             currentCard.data.answers.forEach((answer: Answer) => {
                 answer.isSelected = false;
             });
@@ -86,12 +90,15 @@ export class StrategyComponent{
             }
         }
         this.triviaCardLinkedList.resetToFirstCard();
+        this.score = 0;
+        this.notifyUpdate();
     }
     getScore(){
         return this.score;
     }
     checkAnswer(answerId: number){
         const currentCard = this.triviaCardLinkedList.getCurrent()?.data as TriviaCard;
+        this.triviaCardLinkedList.getCurrent()!.data.isAnswered = true;
         if(currentCard){
             const selectedAnswer = currentCard.answers.find(answer => answer.id === answerId)!;
             selectedAnswer.isSelected = true;
@@ -101,6 +108,7 @@ export class StrategyComponent{
                 return true;
             }
             else{
+                this.notifyUpdate();
                 return false;
             }
         }

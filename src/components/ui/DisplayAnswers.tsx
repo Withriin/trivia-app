@@ -9,26 +9,36 @@ interface DisplayAnswersProps {
 
 const DisplayAnswers : React.FC<DisplayAnswersProps> = ({onAnswerClick}) => {
     const strategy = useContext(strategyContext);
-    const [shuffledAnswers, setShuffledAnswers] = useState<Answer[]>([]);
-    const shuffleAnswers = (array: Answer[]) : Answer[] => {
-        const shuffled = [...array];
-        for(let i = shuffled.length -1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-        }
-        return shuffled;
-    };
+    const [answers, setAnswers] = useState<Answer[]>([]);
+    const [isAnswered, setIsAnswered] = useState(strategy?.getCard()?.data?.isAnswered);
 
     useEffect(() => {
         if(strategy?.getCard()?.data.answers) {
-            setShuffledAnswers(shuffleAnswers(strategy?.getCard()?.data.answers));
+            setAnswers(strategy?.getCard()?.data.answers);
         }
-    }, [strategy?.getCard()?.data.answers]);
+        const updateIsAnswered = () => {
+            setIsAnswered(strategy?.getCard()?.data.isAnswered);
+        };
+
+        strategy?.addUpdateListener(updateIsAnswered);
+
+        return () => {
+            strategy?.removeUpdateListener(updateIsAnswered);
+        };
+
+    }, [strategy?.getCard()?.data.answers, strategy?.getCard()?.data.isAnswered]);
 
     return (
         <>
-            {shuffledAnswers.map((answer) => (
-                <Button key={answer.id} onClick={() => onAnswerClick(answer.id)}>{answer.text}</Button>
+            {answers.map((answer) => (
+                <Button
+                    key={answer.id}
+                    onClick={() => onAnswerClick(answer.id)}
+                    isDisabled={isAnswered}
+                    //style={add conditional style based on answer.isSelected}
+                >
+                    {answer.text}
+                </Button>
             ))}
             </>
     );
