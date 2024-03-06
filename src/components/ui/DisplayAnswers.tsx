@@ -28,6 +28,7 @@ const DisplayAnswers : React.FC<DisplayAnswersProps> = ({onAnswerClick}) => {
 
     }, [strategy?.getCard()?.data.answers, strategy?.getCard()?.data.isAnswered]);
 
+    //Todo Replace the inline style with the stylesheet
     return (
         <>
             {answers.map((answer) => (
@@ -35,7 +36,7 @@ const DisplayAnswers : React.FC<DisplayAnswersProps> = ({onAnswerClick}) => {
                     key={answer.id}
                     onClick={() => onAnswerClick(answer.id)}
                     isDisabled={isAnswered}
-                    //style={add conditional style based on answer.isSelected}
+                    style={answer.isSelected ? {border: '5px solid #777777' }: {}}
                 >
                     {answer.text}
                 </Button>

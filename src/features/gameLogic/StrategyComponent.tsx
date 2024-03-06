@@ -118,5 +118,4 @@ export class StrategyComponent{
 /*
 TODO :
  - Optional: Consider renaming StrategyComponent.  It's not a component?
- - Optional: Consider getting a single answer/card id from the "database"
  */
