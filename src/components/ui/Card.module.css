@@ -1,0 +1,33 @@
+.card{
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    padding: 16px;
+}
+
+.questionSection{
+    font-size: 1.25rem;
+    margin-bottom: 16px;
+}
+
+.answerControlSection{
+    display: grid;
+    grid-template-columns: min-content auto min-content;
+    align-items: center;
+    justify-content: center;
+    gap: 5em;
+    border: solid #ffffff;
+}
+
+
+.controlsLeft,
+.controlsRight{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/*.answerBox{*/
+/*    border: solid #535bf2;*/
+/*    padding: 10px;*/
+/*    margin: 50px;*/
+/*}*/

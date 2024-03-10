@@ -1,0 +1,25 @@
+.button{
+
+}
+
+.buttonDisabled{
+    background-color: #888888;
+}
+
+.answer{
+    background-color: #535bf2;
+    border: solid #ffffff;
+}
+.button:disabled.answer{
+    background-color: #7f7f7f;
+}
+
+.correctAnswer{
+    background-color: #006600;
+    border: solid 5px #008800;
+}
+
+.incorrectAnswer{
+    background-color: #880000;
+    border: solid 5px #C21F39;
+}

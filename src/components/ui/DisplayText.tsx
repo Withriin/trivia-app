@@ -4,7 +4,7 @@ const DisplayText = ({children, style} : {children: any, style?: React.CSSProper
 
 
     return (
-            <textarea style={style} value={children} readOnly />
+            <div style={{...style, whiteSpace: 'pre-wrap'}}>{children}</div>
     );
 };
 export default DisplayText
