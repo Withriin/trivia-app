@@ -1,0 +1,33 @@
+.button{
+    background-color: #535bf2;
+    border: solid 2px #ffffff;
+    width: fit-content;
+}
+
+.buttonDisabled{
+    background-color: #888888;
+}
+
+.answer{
+    width: 30vw;
+    height: 10vh;
+}
+.button:disabled.answer{
+    background-color: #7f7f7f;
+    width: 30vw;
+    height: 10vh;
+}
+
+.correctAnswer{
+    background-color: #006600;
+    border: solid 5px #008800;
+    width: 30vw;
+    height: 10vh;
+}
+
+.incorrectAnswer{
+    background-color: #880000;
+    border: solid 5px #C21F39;
+    width: 30vw;
+    height: 10vh;
+}

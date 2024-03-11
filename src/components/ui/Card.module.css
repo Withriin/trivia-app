@@ -1,0 +1,28 @@
+.card{
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    padding: 1.5em;
+}
+
+.questionSection{
+    font-size: 1.25rem;
+    margin-bottom: 3vh;
+}
+
+.answerControlSection{
+    display: grid;
+    grid-template-columns: 15vw 45vw 15vw;
+    grid-template-rows: auto;
+    gap: 8vw;
+    border: solid #ffffff;
+    justify-items: center;
+    padding: 5em 0;
+}
+
+
+.controlsLeft,
+.controlsRight{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

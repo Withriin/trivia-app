@@ -9,9 +9,11 @@ import StrategyProvider from "./context/StrategyProvider.tsx";
 function App() {
   return (
       <StrategyProvider>
-      <Header />
-        <GameArea />
-        <Footer />
+        <div className="app-container">
+          <Header />
+          <GameArea />
+          <Footer />
+        </div>
       </StrategyProvider>
   )
 }

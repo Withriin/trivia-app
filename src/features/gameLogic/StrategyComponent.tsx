@@ -96,6 +96,9 @@ export class StrategyComponent{
     getScore(){
         return this.score;
     }
+    getSize(): number{
+        return this.triviaCardLinkedList.size();
+    }
     checkAnswer(answerId: number){
         const currentCard = this.triviaCardLinkedList.getCurrent()?.data as TriviaCard;
         this.triviaCardLinkedList.getCurrent()!.data.isAnswered = true;

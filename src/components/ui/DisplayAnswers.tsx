@@ -2,6 +2,7 @@ import Button from "./Button.tsx";
 import {useContext, useEffect, useState} from "react";
 import strategyContext from "../../context/StrategyContext.tsx";
 import {Answer} from "../../features/gameLogic/TriviaInterfaces.ts";
+import styles from "./DisplayAnswers.module.css";
 
 interface DisplayAnswersProps {
     onAnswerClick: (answerId: number) => void;
@@ -28,19 +29,27 @@ const DisplayAnswers : React.FC<DisplayAnswersProps> = ({onAnswerClick}) => {
 
     }, [strategy?.getCard()?.data.answers, strategy?.getCard()?.data.isAnswered]);
 
-    //Todo Replace the inline style with the stylesheet
+    const getButtonVariant = (answer: Answer) => {
+        if (answer.isSelected){
+            return answer.isCorrect ? 'correctAnswer' : 'incorrectAnswer';
+        }
+        return 'answer';
+    };
+
     return (
         <>
-            {answers.map((answer) => (
-                <Button
-                    key={answer.id}
-                    onClick={() => onAnswerClick(answer.id)}
-                    isDisabled={isAnswered}
-                    style={answer.isSelected ? {border: '5px solid #777777' }: {}}
-                >
-                    {answer.text}
-                </Button>
-            ))}
+            <div className={styles.answersContainer}>
+                {answers.map((answer) => (
+                    <Button
+                        key={answer.id}
+                        onClick={() => onAnswerClick(answer.id)}
+                        isDisabled={isAnswered}
+                        variant={getButtonVariant(answer)}
+                    >
+                        {answer.text}
+                    </Button>
+                ))}
+            </div>
             </>
     );
 };
