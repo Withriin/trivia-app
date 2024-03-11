@@ -15,6 +15,14 @@ const Card = () => {
         setCurrentCard(strategy?.getCard());
     };
 
+    const isFirstCard = () : boolean => {
+        return !currentCard?.prev;
+    }
+
+    const isLastCard = () : boolean => {
+        return !currentCard?.next;
+    }
+
     const handlePrevClick = () => {
         strategy?.prevCard();
         setCurrentCard(strategy?.getCard());
@@ -45,13 +53,13 @@ const Card = () => {
                 </div>
                 <div className={styles.answerControlSection}>
                     <div className={styles.controlsLeft}>
-                        <Button onClick={handlePrevClick}>Previous</Button>
+                        <Button onClick={handlePrevClick} isDisabled={isFirstCard()}>Previous</Button>
                     </div>
                     <div className={styles.answerBox}>
                         <DisplayAnswers onAnswerClick={handleAnswerClick} />
                     </div>
                     <div className={styles.controlsRight}>
-                        <Button onClick={handleNextClick}>Next</Button>
+                        <Button onClick={handleNextClick} isDisabled={isLastCard()}>Next</Button>
                     </div>
                 </div>
 

@@ -4,11 +4,6 @@
     width: fit-content;
 }
 
-.playAgain{
-    /*border: solid 2px #ffffff;*/
-    /*width: fit-content;*/
-}
-
 .buttonDisabled{
     background-color: #888888;
 }

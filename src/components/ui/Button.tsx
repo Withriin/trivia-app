@@ -1,7 +1,7 @@
 import styles from "./Button.module.css";
 interface ButtonProps {
     children?: React.ReactNode;
-    variant?: 'default' | 'answer' | 'selectedAnswer' | 'correctAnswer' | 'incorrectAnswer' | 'playAgain';
+    variant?: 'default' | 'answer' | 'correctAnswer' | 'incorrectAnswer';
     onClick?: (event: React.MouseEvent) => void;
     isDisabled? : boolean;
 }

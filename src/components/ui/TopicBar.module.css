@@ -1,6 +1,5 @@
 .topicBar{
     display: grid;
-    grid-template-columns: auto 80vw auto;
+    grid-template-columns: 7vw 80vw 7vw;
     grid-template-rows: auto;
-    justify-content: center;
 }

@@ -14,7 +14,7 @@ const TopicBar = () => {
     return (
         <>
             <div className={styles.topicBar}>
-                <DisplayText>Computer Science</DisplayText> <ScoreDisplay /> <Button onClick={handlePlayAgainClick} variant={'playAgain'}>Play Again</Button>
+                <DisplayText>Topic - Computer Science</DisplayText> <ScoreDisplay /> <Button onClick={handlePlayAgainClick} variant={'default'}>Play Again</Button>
             </div>
         </>
     )

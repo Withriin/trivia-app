@@ -13,11 +13,10 @@
     display: grid;
     grid-template-columns: 15vw 45vw 15vw;
     grid-template-rows: auto;
-    /*align-items: center;*/
-    /*justify-content: center;*/
     gap: 8vw;
     border: solid #ffffff;
     justify-items: center;
+    padding: 5em 0;
 }
 
 
@@ -27,9 +26,3 @@
     align-items: center;
     justify-content: center;
 }
-
-/*.answerBox{*/
-/*    border: solid #535bf2;*/
-/*    padding: 10px;*/
-/*    margin: 50px;*/
-/*}*/
