@@ -1,19 +1,20 @@
-class Node {
-    data: any; // Consider using a more specific type for your data
-    next: Node | null;
-    prev: Node | null;
+
+class Node<T> {
+    data: T;
+    next: Node<T> | null;
+    prev: Node<T> | null;
 
 
-    constructor(data: any) {
+    constructor(data: T) {
         this.data = data;
         this.next = null;
         this.prev = null;
     }
 }
-export class DoubleLinkedList {
-    private head: Node | null;
-    private tail: Node | null;
-    private current: Node | null | undefined;
+export class DoubleLinkedList<T> {
+    private head: Node<T> | null;
+    private tail: Node<T> | null;
+    private current: Node<T> | null | undefined;
     private count: number;
     constructor() {
         this.head = null;
@@ -38,6 +39,14 @@ export class DoubleLinkedList {
     }
     getCurrent(){
         return this.current
+    }
+
+    updateCurrent(newData: any) {
+        if(this.current){
+            const updateData = {...this.current.data, ...newData};
+
+            this.current.data = updateData;
+        }
     }
 
     nextCard(){

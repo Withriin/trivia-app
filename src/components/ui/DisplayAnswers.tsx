@@ -11,14 +11,14 @@ interface DisplayAnswersProps {
 const DisplayAnswers : React.FC<DisplayAnswersProps> = ({onAnswerClick}) => {
     const strategy = useContext(strategyContext);
     const [answers, setAnswers] = useState<Answer[]>([]);
-    const [isAnswered, setIsAnswered] = useState(strategy?.getCard()?.data?.isAnswered);
+    const [isAnswered, setIsAnswered] = useState(strategy?.getIsAnswered());
 
     useEffect(() => {
-        if(strategy?.getCard()?.data.answers) {
-            setAnswers(strategy?.getCard()?.data.answers);
+        {
+            setAnswers(strategy?.getAnswerList()!);
         }
         const updateIsAnswered = () => {
-            setIsAnswered(strategy?.getCard()?.data.isAnswered);
+            setIsAnswered(strategy?.getIsAnswered());
         };
 
         strategy?.addUpdateListener(updateIsAnswered);
@@ -27,7 +27,7 @@ const DisplayAnswers : React.FC<DisplayAnswersProps> = ({onAnswerClick}) => {
             strategy?.removeUpdateListener(updateIsAnswered);
         };
 
-    }, [strategy?.getCard()?.data.answers, strategy?.getCard()?.data.isAnswered]);
+    }, [strategy?.getAnswerList(), strategy?.getIsAnswered()]);
 
     const getButtonVariant = (answer: Answer) => {
         if (answer.isSelected){
@@ -54,3 +54,5 @@ const DisplayAnswers : React.FC<DisplayAnswersProps> = ({onAnswerClick}) => {
     );
 };
 export default DisplayAnswers
+
+// todo update logic when trivia card facade is built
