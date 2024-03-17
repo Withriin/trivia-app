@@ -1,28 +1,47 @@
+.container{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    grid-auto-rows: minmax(100px, auto);
+    justify-content: center;
+    align-items: center;
+    border-top: 2px solid #46cac9;
+    border-bottom: 2px solid #46cac9;
+}
+
 .card{
-    border: 1px solid #ddd;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    border: 1px solid #46cac9;
+    border-radius: 10px / 10px;
+    background-color: #133339;
     padding: 1.5em;
+    width: 100%;
+    height: 80%;
+    margin: 20px 0;
+    grid-column: 2;
+    grid-row: 1;
 }
 
 .questionSection{
-    font-size: 1.25rem;
-    margin-bottom: 3vh;
-}
-
-.answerControlSection{
+    font-size: 1.75rem;
+    margin-bottom: 25px;
+    border: 1px solid #46cac9;
+    border-radius: 10px / 10px;
+    min-width: fit-content;
+    max-width: 75%;
     display: grid;
-    grid-template-columns: 15vw 45vw 15vw;
-    grid-template-rows: auto;
-    gap: 8vw;
-    border: solid #ffffff;
-    justify-items: center;
-    padding: 5em 0;
+    justify-content: start;
+    padding-left: 1rem;
+    padding-right: 1rem;
 }
 
-
-.controlsLeft,
+.controlsLeft{
+    grid-column: 1;
+    grid-row: 1;
+}
 .controlsRight{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    grid-column: 3;
+    grid-row: 1;
+}
+.answerBox{
+    width: 100%;
 }

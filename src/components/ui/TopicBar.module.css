@@ -1,5 +1,24 @@
 .topicBar{
     display: grid;
-    grid-template-columns: 7vw 80vw 7vw;
-    grid-template-rows: auto;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    grid-auto-rows: minmax(100px, auto);
+    /*align-items: center;*/
+}
+
+.topic{
+    grid-column: 1;
+    align-self: auto;
+    max-width: fit-content;
+}
+
+.scoreDisplay{
+    grid-column: 2;
+    justify-self: center;
+    max-width: fit-content;
+}
+
+.playAgainButton{
+    grid-column: 3;
+    justify-self: end;
 }

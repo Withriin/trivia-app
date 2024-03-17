@@ -27,7 +27,7 @@ const ScoreDisplay = () => {
     }, [strategy]);
     return (
         <>
-            <DisplayText>Score: {currentScore} / {currentMaxQuestions}</DisplayText>
+            <DisplayText variant={'game'}>Score: {currentScore} / {currentMaxQuestions}</DisplayText>
         </>
     )
 }

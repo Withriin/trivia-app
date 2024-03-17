@@ -60,25 +60,23 @@ const Card = () => {
 
     return (
         <>
-            <div className={styles.card}>
-                <div className={styles.questionSection}>
-                    <DisplayText>
-                        {`${strategy?.getQuestion()}${strategy?.getIsAnswered() ? `   ${postQuestionText}` : ""}`}
-                    </DisplayText>
-
-                </div>
-                <div className={styles.answerControlSection}>
+            <div className={styles.container}>
                     <div className={styles.controlsLeft}>
                         <Button onClick={handlePrevClick} isDisabled={isFirstCard()}>Previous</Button>
                     </div>
-                    <div className={styles.answerBox}>
-                        <DisplayAnswers onAnswerClick={handleAnswerClick} />
+                    <div className={styles.card}>
+                        <div className={styles.questionSection}>
+                            <DisplayText>
+                                {`${strategy?.getQuestion()}${strategy?.getIsAnswered() ? `   ${postQuestionText}` : ""}`}
+                            </DisplayText>
+                        </div>
+                        <div className={styles.answerBox}>
+                            <DisplayAnswers onAnswerClick={handleAnswerClick}/>
+                        </div>
                     </div>
-                    <div className={styles.controlsRight}>
-                        <Button onClick={handleNextClick} isDisabled={isLastCard()}>Next</Button>
-                    </div>
+                <div className={styles.controlsRight}>
+                    <Button onClick={handleNextClick} isDisabled={isLastCard()}>Next</Button>
                 </div>
-
             </div>
         </>
     );

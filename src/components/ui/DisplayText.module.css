@@ -1,0 +1,15 @@
+.default{
+    white-space: pre-wrap;
+}
+
+.game{
+    white-space: pre-wrap;
+    border: 1px solid #46cac9;
+    border-radius: 10px / 10px;
+    background-color: #133339;
+    padding: 1rem;
+}
+
+.question{
+    justify-content: start;
+}
