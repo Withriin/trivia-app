@@ -4,9 +4,9 @@
 
 .game{
     white-space: pre-wrap;
-    border: 1px solid #46cac9;
+    border: 1px solid var(--card-container-border);
     border-radius: 10px / 10px;
-    background-color: #133339;
+    background-color: var(--card-bg-color);
     padding: 1rem;
 }
 

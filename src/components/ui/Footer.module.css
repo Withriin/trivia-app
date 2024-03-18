@@ -1,0 +1,22 @@
+.footerContainer{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    grid-auto-rows: minmax(100px, auto);
+}
+
+.copyright{
+    grid-column: 1;
+    padding: 1rem;
+    justify-self: left;
+    font-size: small;
+}
+.github{
+    grid-column: 3;
+    justify-self: right;
+    padding: 1rem;
+}
+.github img{
+    max-width: 2em;
+    height: auto;
+}

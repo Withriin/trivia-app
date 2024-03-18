@@ -1,20 +1,37 @@
-.button{
-    background-color: #2aaeb0;
-    background-image: linear-gradient(to bottom, #268e94, transparent);
-    border: 1px solid #46cac9;
+button {
+    border-radius: 8px;
+    border: 1px solid var(--btn-border);
+    padding: 0.6em 1.2em;
+    font-size: 1.25em;
+    font-weight: 500;
+    font-family: inherit;
+    background-color: var(--btn-bg);
+    background-image: linear-gradient(to bottom, var(--btn-bg), var(--btn-bg-gradient-end));
+    cursor: pointer;
+    transition: border-color 0.05s;
+    color: var(--btn-color);
     width: fit-content;
-    font-color: #effcfb;
-    font-size: large;
 }
-.button:hover{
-    background-color: #268e94;
-    background-image: linear-gradient(to bottom, #257279, transparent);
+button:hover {
+    color: var(--btn-color-hover);
+    border-color: var(--btn-border-hover);
+    background-image: linear-gradient(to bottom, var(--btn-bg-hover), var(--btn-bg-hover-gradient-end));
 }
-.button:disabled{
-    background-color: #115e56;
-    color: #244f55;
-    border: 1px solid #244f55;
+button:focus,
+button:focus-visible {
+    outline: 4px auto -webkit-focus-ring-color;
 }
+
+button:disabled{
+    background-color: var(--btn-bg-disabled);
+    background-image: linear-gradient(to bottom, var(--btn-bg-disabled));
+    color: var(--btn-color-disabled);
+    border: 1px solid var(--btn-border-disabled);
+    opacity: 0.8;
+    cursor: default;
+}
+
+
 
 .answer{
     width: 30vw;
@@ -23,19 +40,20 @@
 
 .correctAnswer,
 .correctAnswer:disabled{
-    background-color: #027e09;
-    border: solid 5px #35fd3e;
+    background-color: var(--color-answer-correct);
+    background-image: linear-gradient(to bottom, var(--color-answer-correct));
+    border: solid 5px var(--color-answer-correct-border);
     width: 30vw;
     height: 10vh;
-    color: #effcfb;
+    color: var(--color-text);
 }
 
 .incorrectAnswer,
 .incorrectAnswer:disabled{
-    background-color: #880000;
-    background-image: linear-gradient(to bottom, #268e94, transparent);
-    border: solid 5px #C21F39;
+    background-color: var(--color-answer-incorrect);
+    background-image: linear-gradient(to bottom, var(--color-answer-incorrect));
+    border: solid 5px var(--color-answer-incorrect-border);
     width: 30vw;
     height: 10vh;
-    color: #effcfb;
+    color: var(--color-text);
 }

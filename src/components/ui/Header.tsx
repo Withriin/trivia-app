@@ -1,9 +1,9 @@
-import logo from '../../assets/logo.webp'
+import logo from '../../assets/logo.webp';
+import styles from '../ui/Header.module.css';
 const Header = () => {
-    //Todo Replace inline style with stylesheet
     return (
         <>
-        <div><img src={logo}  alt='Logo' style={{width: '10em', height: 'auto'}} /></div>
+        <div className={styles.logo}><img src={logo}  alt='Logo'  /></div>
             </>
     )
 }
