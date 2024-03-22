@@ -1,7 +1,8 @@
 import {DoubleLinkedList} from '../../gameLogic/DoubleLinkedList.tsx'
+import {TriviaCard} from "../../gameLogic/TriviaInterfaces.ts";
 
 describe('DoubleLinkedList', () => {
-    let list: DoubleLinkedList;
+    let list: DoubleLinkedList<TriviaCard>;
 
     beforeEach(() => {
         list = new DoubleLinkedList();

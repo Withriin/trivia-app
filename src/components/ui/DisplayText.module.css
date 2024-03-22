@@ -7,7 +7,7 @@
     border: 1px solid var(--card-container-border);
     border-radius: 10px / 10px;
     background-color: var(--card-bg-color);
-    padding: 1rem;
+    padding: 1em;
 }
 
 .question{

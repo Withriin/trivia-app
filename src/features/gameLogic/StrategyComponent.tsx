@@ -163,17 +163,35 @@ export class StrategyComponent{
         return this.getAnswerList()?.find((answer: Answer) => answer.isCorrect)?.text!;
     }
 
-    getPostQuestionText(){
-        const correctAnswerText = "Correct!";
-        const wrongAnswerText = `Incorrect. The correct answer was ${this.getCorrectAnswerText()}`;
-        const defaultString = '';
-        if(this.getIsSelected()) {
+    // getPostQuestionText(){
+    //     const correctAnswerText = `Correct!`;
+    //     const wrongAnswerText = "Incorrect. The correct answer was ${this.getCorrectAnswerText()}";
+    //     const defaultString = '';
+    //     if(this.getIsSelected()) {
+    //         if (this.getIsSelectedCorrect()) {
+    //             return correctAnswerText;
+    //         }
+    //         return wrongAnswerText;
+    //     }else{
+    //         return defaultString;
+    //     }
+    // }
+
+    // Todo: change this back to previous and make styles available to module.css
+    getPostQuestionText() {
+        if (this.getIsSelected()) {
             if (this.getIsSelectedCorrect()) {
-                return correctAnswerText;
+                return <span style={{ fontWeight: 'bold', color: '#35fd3e'}}>Correct!</span>;
+            } else {
+                return (
+                    <span>
+                    <span style={{ fontWeight: 'bold', color: '#EF0107' }}>Incorrect.</span>
+                        {' '}The correct answer was {this.getCorrectAnswerText()}.
+                </span>
+                );
             }
-            return wrongAnswerText;
-        }else{
-            return defaultString;
+        } else {
+            return <span></span>; // Or return null if you don't want to render anything
         }
     }
 }

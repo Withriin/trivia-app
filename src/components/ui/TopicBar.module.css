@@ -1,14 +1,13 @@
 .topicBar{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-    grid-auto-rows: minmax(100px, auto);
-    /*align-items: center;*/
+    grid-auto-rows: minmax(1rem, auto);
+
 }
 
 .topic{
     grid-column: 1;
-    align-self: auto;
+    align-self: start;
     max-width: fit-content;
 }
 

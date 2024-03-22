@@ -67,8 +67,12 @@ const Card = () => {
                     <div className={styles.card}>
                         <div className={styles.questionSection}>
                             <DisplayText>
-                                {`${strategy?.getQuestion()}${strategy?.getIsAnswered() ? `   ${postQuestionText}` : ""}`}
+                                {strategy?.getQuestion()}
                             </DisplayText>
+                        </div>
+                        <div className={styles.postQuestion}>
+                            {/*{`${strategy?.getIsAnswered() ? `${postQuestionText}` : ""}`}*/}
+                            {postQuestionText}
                         </div>
                         <div className={styles.answerBox}>
                             <DisplayAnswers onAnswerClick={handleAnswerClick}/>
