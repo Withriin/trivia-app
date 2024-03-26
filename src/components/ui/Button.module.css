@@ -1,8 +1,7 @@
 button {
     border-radius: 8px;
     border: 1px solid var(--btn-border);
-    padding: 0.6em 1.2em;
-    font-size: 1.25em;
+    font-size: 1rem;
     font-weight: 500;
     font-family: inherit;
     background-color: var(--btn-bg);
@@ -11,6 +10,8 @@ button {
     transition: border-color 0.05s;
     color: var(--btn-color);
     width: fit-content;
+    min-width: clamp(6rem, 2vw, 10rem);
+    min-height: 3rem;
 }
 button:hover {
     color: var(--btn-color-hover);
@@ -34,12 +35,15 @@ button:disabled{
 
 
 .answer{
+    /*font-size: clamp(1rem, 1.25rem, 1.5rem);*/
     width: 30vw;
     height: 10vh;
+    min-height: fit-content;
 }
 
 .correctAnswer,
 .correctAnswer:disabled{
+    /*font-size: clamp(1rem, 1.25rem, 1.5rem);*/
     background-color: var(--color-answer-correct);
     background-image: linear-gradient(to bottom, var(--color-answer-correct));
     border: solid 5px var(--color-answer-correct-border);
@@ -50,10 +54,24 @@ button:disabled{
 
 .incorrectAnswer,
 .incorrectAnswer:disabled{
+    /*font-size: clamp(1rem, 1.25rem, 1.5rem);*/
     background-color: var(--color-answer-incorrect);
     background-image: linear-gradient(to bottom, var(--color-answer-incorrect));
     border: solid 5px var(--color-answer-incorrect-border);
     width: 30vw;
     height: 10vh;
     color: var(--color-text);
+}
+
+@media (max-width: 480px) {
+    .button{
+        font-size: 14px;
+    }
+    .answer,
+    .correctAnswer:disabled,
+    .correctAnswer,
+    .incorrectAnswer:disabled,
+    .incorrectAnswer{
+        font-size: 12px;
+    }
 }

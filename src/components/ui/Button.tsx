@@ -6,8 +6,9 @@ interface ButtonProps {
     isDisabled? : boolean;
 }
 const Button: React.FC<ButtonProps> = ({ children, onClick, isDisabled = false, variant = 'default' } ) => {
+    // determine the base style based on the variant
     const variantClass = styles[variant] || styles.default;
-    const buttonClasses = `${styles.button} ${isDisabled ? styles.buttonDisabled : ''} ${variantClass}`;
+    const buttonClasses = `${styles.button} ${isDisabled ? styles.buttonDisabled : ''} ${variantClass} `;
 
     return (
         <button className={buttonClasses} onClick={onClick}  disabled={isDisabled}>

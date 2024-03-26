@@ -47,8 +47,8 @@ describe('DoubleLinkedList', () => {
         expect(list.findCard('Non-existent')).toBeNull();
     });
     it('should return the current card', () =>{
-       const firstCard = 'First Card';
-       const secondCard = 'Second Card';
+       const firstCard = 'First TriviaGameCard';
+       const secondCard = 'Second TriviaGameCard';
        list.addCard(firstCard);
        list.addCard(secondCard);
        expect(list.getCurrent()?.data).toBe(firstCard);
@@ -57,7 +57,7 @@ describe('DoubleLinkedList', () => {
     });
     it('should return the correct count', () =>{
         for (let i = 0; i < 3; i++){
-            list.addCard('A Card');
+            list.addCard('A TriviaGameCard');
         }
         expect(list.size()).toBe(3)
     });

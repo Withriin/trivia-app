@@ -1,6 +1,7 @@
 import TopicBar from "../components/ui/TopicBar.tsx";
-import Card from "../components/ui/Card.tsx";
+import TriviaGameCard from "../components/ui/TriviaGameCard.tsx";
 import styles from "./GameArea.module.css";
+import FlashCard from "../components/ui/FlashCard.tsx";
 
 const GameArea = () => {
        return(
@@ -8,7 +9,7 @@ const GameArea = () => {
             <div className={styles.topicBar}>
                 <TopicBar />
             </div>
-            <Card />
+            <TriviaGameCard />
         </>
     );
 };

@@ -1,8 +1,10 @@
 .default{
     white-space: pre-wrap;
+    font-size: clamp(0.75rem, 2.5vw, 1.5rem);
 }
 
 .game{
+    font-size: clamp(1rem, 1.5vw, 2rem);
     white-space: pre-wrap;
     border: 1px solid var(--card-container-border);
     border-radius: 10px / 10px;
@@ -12,4 +14,16 @@
 
 .question{
     justify-content: start;
+}
+
+.footer{
+    color: var(--card-bg-color);
+}
+
+@media (max-width: 768px) {
+    .game,
+    .default,
+    .question {
+    font-size: 12px;
+    }
 }

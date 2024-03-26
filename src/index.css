@@ -34,7 +34,9 @@
   /* card variables */
   --card-bg-color: #244f55;
   --card-container-border: #133339;
+  --card-container-border-outer: #257279;
 
+  --color-text-footer: #effcfb;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -86,9 +88,12 @@ h1 {
     --btn-color-disabled: #46c8ca;
     --btn-border-disabled: #133339;
 
-    --card-bg-color: #268e94;
-    --card-bg-color-gradient: #257279;
+    --card-bg-color: #2aaeb0;
+    --card-bg-color-gradient: #268e94;
     --card-container-border: #133339;
+    --card-container-border-outer: #46c8ca;
+
+    --color-text-footer: #133339;
   }
   a:hover {
     color: var(--color-link-hover);
@@ -96,6 +101,7 @@ h1 {
   button {
     background-color: var(--color-bg);
   }
+
 }
 
 @media (max-width: 1024px){

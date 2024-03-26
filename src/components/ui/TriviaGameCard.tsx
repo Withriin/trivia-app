@@ -7,7 +7,7 @@ import styles from './Card.module.css'
 
 
 
-const Card = () => {
+const TriviaGameCard = () => {
     const strategy = useContext(strategyContext);
     const [currentCard, setCurrentCard] = useState(strategy?.getCard());
     const [postQuestionText, setPostQuestionText] = useState(()  => {return strategy?.getPostQuestionText()});
@@ -85,4 +85,4 @@ const Card = () => {
         </>
     );
 };
-export default Card
+export default TriviaGameCard
